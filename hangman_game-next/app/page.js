@@ -18,7 +18,7 @@ const BonecoForca = ({ erros }) => {
     "🟫", 
     "🟫", 
     "🟫", 
-    "😊", // cabeça
+    "😑", // cabeça
     "👕", // corpo
     "👐", // braços
     "👖", // pernas
@@ -83,7 +83,7 @@ export default function Home() {
     if (palavra && palavra.split("").every((l) => tentativas.includes(l))) {
       setMensagem("Parabéns, você venceu!");
     } else if (erros >= maxErros) {
-      setMensagem(`Game Over! A palavra era: ${palavra}`);
+      setMensagem(`It's Over! A palavra era: ${palavra}`);
     }
   }, [tentativas, erros, palavra]);
 
