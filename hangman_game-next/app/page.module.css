@@ -1,0 +1,167 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  gap: 1.5rem;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f8fafc;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.palavra {
+  font-size: 2.5rem;
+  letter-spacing: 0.5rem;
+  font-weight: 600;
+  margin: 2rem 0;
+  min-height: 60px;
+  text-align: center;
+  color: #e2e8f0;
+}
+
+.erros {
+  font-size: 1.2rem;
+  color: #ef4444;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.controles {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.input {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 2px solid #475569;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  text-transform: uppercase;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.3);
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+}
+
+.btn:disabled {
+  background: #475569;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btnReiniciar {
+  background: linear-gradient(135deg, #10b981, #059669);
+  margin-top: 1rem;
+}
+
+.tentativas {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.tentativas p {
+  margin: 0.5rem 0;
+  color: #94a3b8;
+}
+
+.mensagem {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.vitoria {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.derrota {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+/* Desenho da forca simples */
+.forca {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.boneco {
+  font-size: 3rem;
+  transition: all 0.3s ease;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .main {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .palavra {
+    font-size: 1.8rem;
+    letter-spacing: 0.3rem;
+  }
+  
+  .controles {
+    flex-direction: column;
+  }
+  
+  .input {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
