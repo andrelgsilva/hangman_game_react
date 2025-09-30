@@ -2,36 +2,58 @@
 
 import { useState, useEffect } from "react";
 import styles from "./page.module.css";
+import Boneco from "../components/Boneco"; // ajuste o caminho se necessário
 
 const palavras = [
-  "REACT", "NEXT", "JAVASCRIPT", "PYTHON", "JAVA", "HTML", "CSS",
-  "FRONTEND", "BACKEND", "NODE", "ANGULAR", "VUE", "MYSQL", "MONGODB",
-  "TYPESCRIPT", "GITHUB", "DOCKER", "LINUX", "WINDOWS", "ANDROID", "IOS",
-  "MOBILE", "FIREBASE", "SUPABASE", "PRISMA", "EXPRESS", "SPRING",
-  "DJANGO", "FLASK", "GRAPHQL", "APOLLO"
+"ABACAXI","ABACATE","ABELHA","ABRIGO","ACORDAR","AÇÚCAR","ÁGUA","ALEGRIA",
+"ALMOÇO","ALUNO","AMIGO","AMOR","ANIMAL","ANIVERSÁRIO","APRENDER","ARCO",
+"AREIA","ARROZ","ÁRVORE","AVÓ","AVIÃO","AZUL","BALA","BANANA","BANCO",
+"BANHO","BOLA","BORBOLETA","BRINCAR","BROTO","BUCHINHO","CABEÇA","CACHORRO",
+"CAMA","CAMISA","CANETA","CANTAR","CARRO","CASA","CELEBRAR","CERTO","CHAVE",
+"CHUVA","CINZA","CIDADE","COELHO","COPO","COR","CORAÇÃO","CORTAR","COZINHA",
+"COZINHAR","DANÇA","DENTISTA","DESENHO","DOCE","ESCURO","ESPELHO","ESCOLA",
+"ESQUILO","ESTRELA","FAMÍLIA","FELICIDADE","FERRO","FLORESTA","FLOR","FRUTA",
+"FRIO","FUMAÇA","GATO","GELADO","GRANDE","GUARDAR","GUITARRA","HÁBITO","HOMEM",
+"HOJE","HORTA","ILHA","JANELA","JARDIM","JOGO","LÁPIS","LEITE","LIVRO","LUA",
+"LUGAR","MACACO","MÁGICA","MÃO","MEL","MENINO","MENINA","MESA","MOLHO","MORANGO",
+"NAÇÃO","NAVE","NOITE","NOME","NÚMERO","OBJETO","ÓLEO","OLHO","ONDA","OVELHA",
+"PÁ","PAPEL","PASSARINHO","PEIXE","PELOTA","PESSOA","PIANO","PIPOCA","PISO",
+"PLANTA","PRATO","PRAIA","QUEIJO","QUENTE","QUINTAL","RÁDIO","RELOGIO","RIO",
+"RODA","ROSA","SALADA","SAPATO","SAXOFONE","SINAL","SOL","SORRISO","SUCO",
+"TECLADO","TELA","TEMPO","TERRA","TIJOLO","TOALHA","TOCO","TOQUE","TRAVESSEIRO",
+"TRIGO","UNIVERSO","VACA","VAN","VASSOURA","VELA","VENTO","VERDE","VIAGEM",
+"VILA","VIOLETA","VOAR","VÔLEI","ÁGUA","ABELHA","ARCO-ÍRIS","BANANA","BICICLETA",
+"BORBOLETA","BRINQUEDO","CACHOEIRA","CALÇADO","CANETA","CARRINHO","CELEIRO",
+"CHUVA","CINEMA","COZINHA","DADO","DESENHO","ESCADA","ESCOLA","FACA","FLORESTA",
+"FRUTA","GARRAFA","GATO","GELADEIRA","HORIZONTE","ILHA","JANELA","JARDIM",
+"LÂMPADA","LEÃO","LIVRO","MÁQUINA","MESA","MONTE","MORANGO","NAVIO","NOITE",
+"OLHO","ONDA","OVO","PAPEL","PEIXE","PENSA","PIPA","PRATO","PRIMAVERA","QUEIJO",
+"QUINTAL","RAIO","REDE","RELÓGIO","RIO","ROSA","SAPATO","SAXOFONE","SOL","SORRISO",
+"SORVETE","TELA","TESOURA","TOALHA","TOCO","TRAVESSEIRO","UNIVERSO","VACA",
+"VENTO","VERDE","VIAGEM","VILA","VIOLETA","VOAR","ABACATE","ACORDAR","AÇÚCAR",
+"ÁGUA","ALEGRIA","ALMOÇO","ALUNO","AMIGO","AMOR","ANIMAL","ANIVERSÁRIO","APRENDER",
+"ARCO","AREIA","ARROZ","ÁRVORE","AVÓ","AVIÃO","AZUL","BALA","BANANA","BANCO",
+"BANHO","BOLA","BORBOLETA","BRINCAR","BROTO","BUCHINHO","CABEÇA","CACHORRO",
+"CAMA","CAMISA","CANETA","CANTAR","CARRO","CASA","CELEBRAR","CERTO","CHAVE",
+"CHUVA","CINZA","CIDADE","COELHO","COPO","COR","CORAÇÃO","CORTAR","COZINHA",
+"COZINHAR","DANÇA","DENTISTA","DESENHO","DOCE","ESCURO","ESPELHO","ESCOLA",
+"ESQUILO","ESTRELA","FAMÍLIA","FELICIDADE","FERRO","FLORESTA","FLOR","FRUTA",
+"FRIO","FUMAÇA","GATO","GELADO","GRANDE","GUARDAR","GUITARRA","HÁBITO","HOMEM",
+"HOJE","HORTA","ILHA","JANELA","JARDIM","JOGO","LÁPIS","LEITE","LIVRO","LUA",
+"LUGAR","MACACO","MÁGICA","MÃO","MEL","MENINO","MENINA","MESA","MOLHO","MORANGO",
+"NAÇÃO","NAVE","NOITE","NOME","NÚMERO","OBJETO","ÓLEO","OLHO","ONDA","OVELHA",
+"PÁ","PAPEL","PASSARINHO","PEIXE","PELOTA","PESSOA","PIANO","PIPOCA","PISO",
+"PLANTA","PRATO","PRAIA","QUEIJO","QUENTE","QUINTAL","RÁDIO","RELOGIO","RIO",
+"RODA","ROSA","SALADA","SAPATO","SAXOFONE","SINAL","SOL","SORRISO","SUCO",
+"TECLADO","TELA","TEMPO","TERRA","TIJOLO","TOALHA","TOCO","TOQUE","TRAVESSEIRO",
+"TRIGO","UNIVERSO","VACA","VAN","VASSOURA","VELA","VENTO","VERDE","VIAGEM",
+"VILA","VIOLETA","VOAR","VÔLEI"
 ];
 
-// Componente do boneco da forca
-const BonecoForca = ({ erros }) => {
-  const partes = [
-    "🟫", 
-    "🟫", 
-    "🟫", 
-    "🟫", 
-    "😑", // cabeça
-    "👕", // corpo
-    "👐", // braços
-    "👖", // pernas
-  ];
 
-  return (
-    <div className={styles.forca}>
-      <div className={styles.boneco}>
-        {partes.slice(0, Math.min(erros + 4, partes.length)).join(" ")}
-      </div>
-    </div>
-  );
-};
+const removerAcentos = (str) =>
+  str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
 
 export default function Home() {
   const [palavra, setPalavra] = useState("");
@@ -76,29 +98,34 @@ export default function Home() {
 
   const palavraExibida = palavra
     .split("")
-    .map((letra) => (tentativas.includes(letra) ? letra : "_"))
+    .map((letraOriginal) =>
+      tentativas.includes(removerAcentos(letraOriginal.toUpperCase()))
+        ? letraOriginal
+        : "_"
+    )
     .join(" ");
 
   useEffect(() => {
-    if (palavra && palavra.split("").every((l) => tentativas.includes(l))) {
+    const palavraNormalizada = removerAcentos(palavra.toUpperCase());
+    if (palavra && palavraNormalizada.split("").every((l) => tentativas.includes(l))) {
       setMensagem("Parabéns, você venceu!");
     } else if (erros >= maxErros) {
       setMensagem(`It's Over! A palavra era: ${palavra}`);
     }
   }, [tentativas, erros, palavra]);
 
-  // Tecla Enter para enviar
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       verificarLetra();
     }
   };
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}> Jogo da Forca</h1>
+      <h1 className={styles.title}>Jogo da Forca</h1>
 
-      <BonecoForca erros={erros} />
+      {/* Aqui o Boneco SVG */}
+      <Boneco erros={erros} maxErros={maxErros} />
 
       <div className={styles.palavra}>{palavraExibida}</div>
 
@@ -117,12 +144,12 @@ export default function Home() {
           disabled={mensagem !== ""}
           autoFocus
         />
-        <button 
-          className={styles.btn} 
-          onClick={verificarLetra} 
+        <button
+          className={styles.btn}
+          onClick={verificarLetra}
           disabled={mensagem !== "" || !input}
         >
-           Tentar
+          Tentar
         </button>
       </div>
 
@@ -133,14 +160,14 @@ export default function Home() {
 
       {mensagem && (
         <div className={`${styles.mensagem} ${
-          mensagem.includes("") ? styles.vitoria : styles.derrota
+          mensagem.includes("venceu") ? styles.vitoria : styles.derrota
         }`}>
           {mensagem}
         </div>
       )}
 
       <button className={`${styles.btn} ${styles.btnReiniciar}`} onClick={novaPalavra}>
-         Novo Jogo
+        Novo Jogo
       </button>
     </main>
   );
